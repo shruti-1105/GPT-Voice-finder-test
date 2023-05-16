@@ -3,8 +3,8 @@ import speech_recognition as sr
 import pyttsx3
 import time 
 
-openai.api_key = "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"
-# Initialize the text to speech engine 
+openai.api_key = "sk-u8JdqahbFnF7g7ERQbRtT3BlbkFJgOsb63n90wzc8G6fZYq55"
+
 engine=pyttsx3.init()
 
 
@@ -15,7 +15,7 @@ def transcribe_audio_to_test(filename):
     try:
         return recogizer.recognize_google(audio)
     except:
-        print("skipping unkown error")
+        print("skippinG error")
 
 def generate_response(prompt):
     response= openai.completion.create(
@@ -33,7 +33,6 @@ def speak_text(text):
 
 def main():
     while True:
-        #Waith for user say "genius"
         print("Say 'slave' to start recording your question")
         with sr.Microphone() as source:
             recognizer=sr.Recognizer()
@@ -51,10 +50,7 @@ def main():
                         with open(filename,"wb")as f:
                             f.write(audio.get_wav_data())
                             
-                            
-                        
-                        
-                    #transcript audio to test 
+
                     text=transcribe_audio_to_test(filename)
                     if text:
                         print(f"yuo said {text}")
